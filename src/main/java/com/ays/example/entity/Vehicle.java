@@ -1,9 +1,6 @@
 package com.ays.example.entity;
 
-import lombok.AccessLevel;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 import lombok.experimental.FieldDefaults;
 
 import javax.persistence.*;
@@ -19,6 +16,7 @@ import java.io.Serializable;
 @Setter
 @FieldDefaults(level = AccessLevel.PRIVATE)
 @NoArgsConstructor
+@EqualsAndHashCode
 public class Vehicle implements Serializable {
 
     @Id

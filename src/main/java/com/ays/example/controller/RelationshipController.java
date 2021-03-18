@@ -29,7 +29,7 @@ public class RelationshipController {
      * Create user with address details along with Vehicles
      *
      * @param userDto user details in json format
-     *                e.g {"userName":"Ayush","address":{"city":"Bangalore"},"vehicles":[{"vehicleName":"alto","vehicleName":"swift"}]}
+     *                e.g {"userName":"a1","address":{"city":"b1"},"vehicles":[{"vehicleName":"v1"}]}
      *
      * @return ResponseEntity if {@link WebResponse} type
      */
@@ -37,6 +37,19 @@ public class RelationshipController {
     public ResponseEntity<WebResponse<UserDto>> create(@RequestBody UserDto userDto) {
         UserDto saveDto = relationshipService.save(userDto);
         return toResponseEntity(new WebResponse.Builder<UserDto>(HttpStatus.OK, "r1", USER_CREATE, 1).withData(saveDto).build());
+    }
+
+    @PutMapping(value = "/users/{userId}")
+    public ResponseEntity<WebResponse<UserDto>> update(@PathVariable Long userId, @RequestBody UserDto userDto) {
+        UserDto updateDto = relationshipService.update(userId, userDto);
+        return toResponseEntity(new WebResponse.Builder<UserDto>(HttpStatus.OK, "r1", USER_CREATE, 1).withData(updateDto).build());
+    }
+
+    @PutMapping(value = "/users/{userId}/address/{addressId}")
+    public ResponseEntity<WebResponse<UserDto>> updateAddress(@PathVariable Long userId,@PathVariable Long addressId,
+            @RequestBody UserDto userDto) {
+        UserDto updateDto = relationshipService.update(userId, userDto);
+        return toResponseEntity(new WebResponse.Builder<UserDto>(HttpStatus.OK, "r1", USER_CREATE, 1).withData(updateDto).build());
     }
 
     @GetMapping(value = "/users")
