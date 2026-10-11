@@ -13,6 +13,7 @@ import static com.ays.example.common.enums.ApiMessage.*;
 import static com.ays.example.util.WebUtil.toResponseEntity;
 
 /**
+ * RelationshipController is a REST controller that handles the relationship between users and their addresses.
  * @author ayush agrahari created on 14/03/2021
  */
 @RestController
